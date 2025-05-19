@@ -1,0 +1,43 @@
+/* CustomTableHomeowner CSS */
+.table-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.icon-cell {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.edit-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.table-icon.clickable {
+  cursor: pointer;
+}
+
+.custom-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.actions-cell {
+  text-align: center;
+  width: 80px;
+}
+
+/* Inherit other styles from CustomTable.css */

@@ -1,0 +1,67 @@
+@startuml
+!theme vibrant
+
+entity "userprofile" {
+  + profilename : VARCHAR(50) <<PK>>
+  --
+  + profiletype : VARCHAR(50) <<FK>>
+  + profiledescription : VARCHAR(50)
+}
+
+entity "useraccount" {
+  + username : VARCHAR(50) <<PK>>
+  --
+  + password : VARCHAR(255)
+  + firstname : VARCHAR(100)
+  + lastname : VARCHAR(100)
+  + email : VARCHAR(100) <<UNIQUE>>
+  + phone : VARCHAR(20)
+  + profilename : VARCHAR(50) <<FK>>
+}
+
+entity "cleaningservice" {
+  + cleanerusername : VARCHAR(50) <<FK>> <<PK>>
+  + cleaningservicename : VARCHAR(100) <<PK>>
+  --
+  + cleaningdescription : VARCHAR(100)
+  + servicecategory : VARCHAR(50) <<FK>>
+  + price : DECIMAL(10,2)
+  + numofviews : INT
+  + numofshortlist : INT
+}
+
+entity "confirmmatches" {
+  + cleanerusername : VARCHAR(50) <<FK>> <<PK>>
+  + homeownerusername : VARCHAR(50) <<FK>> <<PK>>
+  + cleaningservicename : VARCHAR(100) <<PK>>
+  + cleaninglocation : VARCHAR(100)
+  + cleaningdate : VARCHAR(50) <<PK>>
+  + cleaningstarttime : TIME <<PK>>
+  --
+  + cleaningendtime : TIME
+}
+
+entity "serviceshortlist" {
+  + cleanerusername : VARCHAR(50) <<FK>> <<PK>>
+  + homeownerusername : VARCHAR(50) <<FK>> <<PK>>
+  + cleaningservicename : VARCHAR(100) <<PK>>
+  --
+}
+
+entity "servicecategory" {
+  + servicecategory : VARCHAR(50) <<PK>>
+  --
+  + servicedescription : VARCHAR(100)
+}
+
+useraccount }-- userprofile : "references"
+useraccount }-- servicecategory : "creates"
+cleaningservice }-- useraccount : "provides"
+cleaningservice }-- servicecategory : "belongs to"
+confirmmatches }-- useraccount : "booked by"
+confirmmatches }-- cleaningservice : "includes"
+serviceshortlist }-- useraccount : "shortlisted by"
+serviceshortlist }-- cleaningservice : "in shortlist"
+serviceshortlist }-- servicecategory
+
+@enduml
