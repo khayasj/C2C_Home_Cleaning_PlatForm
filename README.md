@@ -32,8 +32,7 @@ A role-based customer-to-customer (C2C) platform that connects freelance home cl
 • Draw.io, JSON, Taiga (Documentation & Planning)
 
 ## Project Structure
-
-📦 project-root
+```📦 project-root
 ├── client/
 │   └── src/
 │       ├── boundary/         # Frontend role-specific views
@@ -43,7 +42,7 @@ A role-based customer-to-customer (C2C) platform that connects freelance home cl
 │   ├── entities/             # Database interaction logic
 │   ├── server.js             # Express backend entry point
 │   └── database.sql          # MySQL schema
-
+```
 ## 🚀 How to Run
 
 ### Backend (port 5000)
